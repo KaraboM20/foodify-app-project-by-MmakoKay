@@ -1,0 +1,16 @@
+.favourite-button {
+    text-align: start;
+    margin-left: 20px;
+    padding: 10px;
+    color: greenyellow;
+    background-color: black;
+    border: greenyellow solid 3px;
+    border-radius: 20px;
+    cursor: pointer;
+    
+}
+
+.favourite-button:hover {
+    color: black;
+    background-color: white;
+}

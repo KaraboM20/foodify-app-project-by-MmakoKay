@@ -1,0 +1,47 @@
+.searchbox-section {
+    background-image: url('https://t3.ftcdn.net/jpg/08/08/17/38/240_F_808173815_pFCQsA5inCAeaIzUHiTicKU1RiNYpyEO.jpg');
+    background-position: center;
+    background-repeat:no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column; 
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    
+}
+
+h1,h5 {
+    color: white;
+}
+
+.header_search {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    align-items:center;
+    
+}
+
+.search-input {
+    height:12px;
+    padding: 15px;
+    border:greenyellow solid 3px;
+    width:500px;
+    cursor: pointer;
+    
+}
+
+.search-button {
+    border: greenyellow solid 3px;
+    padding: 7px;
+    background-color: greenyellow;
+    cursor: pointer;
+    
+}
+
+.search-button:hover {
+    background-color: black;
+    color: white;
+}
