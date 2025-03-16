@@ -1,0 +1,58 @@
+.recipe-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+    padding: 20px;
+  }
+  
+  .recipe-card {
+    color: black;
+    background: #fff;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .recipe-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .recipe-icons {
+    display: flex;
+    justify-content: space-between;
+    
+  }
+
+  .recipe-link {
+    background-color: greenyellow;
+    color: black;
+    border: none;
+    border-radius: 20px;
+    padding: 7px;
+  }
+
+  .recipe-link:hover {
+    color: greenyellow;
+    background-color: black;
+  }
+
+  .recipe-icon {
+    color: black;
+    background-color: greenyellow;
+    padding: 6px;
+    border-radius: 50px;
+  }
+
+  button .recipe-icon {
+    border: ;
+  }
+
+  .recipe-icon:hover {
+    color: greenyellow;
+    background-color: black;
+  }
+  
