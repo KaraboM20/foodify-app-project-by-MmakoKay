@@ -20,7 +20,7 @@ Welcome to **Foodify App**, a recipe web application built with React, Express, 
   - **Lunch**: Midday meals like "Chicken Burger" or "Pepperoni Pizza".
   - **Dinner**: Hearty dishes such as "BBQ Burger" or "Meat Lovers Pizza".
   - **Dessert**: Sweet treats like "Dessert Pizza" or "Chocolate Toast".
-- **Filter by Category**: Select a category to view only those recipes.
+  
 
 ## Tech Stack
 - **Frontend**: React (Create React App) for a dynamic, responsive UI.
