@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // Fetch Recipes API
-const API_BASE_URL = "http://localhost:3000/recipes"; 
+const API_BASE_URL = "http://localhost:3001/recipes"; 
 
 
 export const fetchRecipes = async (category = "", query = "") => {
