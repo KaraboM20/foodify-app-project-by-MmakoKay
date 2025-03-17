@@ -1,70 +1,44 @@
-# Getting Started with Create React App
+# Foodify App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to **Foodify App**, a recipe web application built with React, Express, MongoDB, and deployed on Netlify. This app allows users to explore a collection of 20 delicious recipes, categorized into Breakfast, Lunch, Dinner, and Dessert. Whether you're craving a burger, pizza, sandwich, or toast, Foodify makes it easy to find and view recipe details with a sleek, user-friendly interface.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+### 1. Search Bar
+- **Easy Recipe Search**: Use the search box to quickly find recipes by name. Type "burger" to see all burger recipes, "pizza" for pizza options, or any keyword to filter the list instantly.
+- **Case-Insensitive**: The search works regardless of capitalization (e.g., "Burger" or "burger").
 
-### `npm start`
+### 2. Recipe Details
+- **View Full Details**: Click on any recipe to see its details, including:
+  - **Ingredients**: A list of everything you need to make the dish.
+  - **Instructions**: Step-by-step guidance to prepare the recipe.
+  - **Image**: A visual preview of the finished dish.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 3. Categorized Recipe Page
+- **Organized by Category**: The main page is neatly divided into sections:
+  - **Breakfast**: Start your day with options like "Breakfast Burger" or "Veggie Breakfast Pizza".
+  - **Lunch**: Midday meals like "Chicken Burger" or "Pepperoni Pizza".
+  - **Dinner**: Hearty dishes such as "BBQ Burger" or "Meat Lovers Pizza".
+  - **Dessert**: Sweet treats like "Dessert Pizza" or "Chocolate Toast".
+- **Filter by Category**: Select a category to view only those recipes.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Tech Stack
+- **Frontend**: React (Create React App) for a dynamic, responsive UI.
+- **Backend**: Express.js with MongoDB for storing and serving recipes.
+- **Deployment**: Netlify with serverless functions for hosting and API access.
+- **Database**: MongoDB Atlas for cloud-based recipe storage.
 
-### `npm test`
+  
+### Local Development
+To run this project on your machine, follow these steps:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/your-username/foodify-app-project.git
+   cd C:\Users\Admin\Documents\foodify-app-project
+   npm install
+   It will run in your browser(chrome preferred)
+   
+   **Server**::
+   cd C:\Users\Admin\Documents\foodify-app-project\server
+   npm start
