@@ -34,7 +34,7 @@ To run this project on your machine, follow these steps:
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-username/foodify-app-project.git
+   git clone https://github.com/KaraboM20/foodify-app-project-by-MmakoKay.git
    cd C:\Users\Admin\Documents\foodify-app-project
    npm install
    It will run in your browser(chrome preferred)
