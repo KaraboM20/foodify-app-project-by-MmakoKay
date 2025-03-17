@@ -5,11 +5,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { removeFavorite } from '../redux/favoritesSlice';
 
 const Favorites = () => {
-  const favorites = useSelector((state) => state.favorites.items); 
+  const favorites = useSelector((state) => state.favorites.items);
   const dispatch = useDispatch();
 
   const handleRemoveFavorite = (id) => {
-    dispatch(removeFavorite(id)); 
+    dispatch(removeFavorite(id));
   };
 
   return (

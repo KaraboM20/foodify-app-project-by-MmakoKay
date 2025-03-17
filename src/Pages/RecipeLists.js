@@ -7,7 +7,7 @@ import { FaHeart } from "react-icons/fa";
 import { RecipeContext } from '../context/RecipeContext';
 import { fetchRecipes } from '../api/recipeApi';
 import { useDispatch, useSelector } from 'react-redux';
-import { addFavorite } from '../redux/favoritesSlice';
+import { addFavorite, removeFavorite } from '../redux/favoritesSlice';
 
 
 const RecipeLists = () => {
@@ -31,12 +31,18 @@ const RecipeLists = () => {
     };
 
     loadRecipes();
-  }, [setRecipes]);
+  }, [isSearching, recipes.length, setRecipes]);
 
   const handleFavoriteClick = (recipe) => {
-    console.log("Favorite clicked for:", recipe.name); 
-    dispatch(addFavorite(recipe));
-    console.log("Dispatched addFavorite with:", recipe);
+    const isAlreadyFavorite = isFavorite(recipe._id);
+    console.log(`${recipe.name} is ${isAlreadyFavorite ? 'already' : 'not'} a favorite`);
+    if (isAlreadyFavorite) {
+      dispatch(removeFavorite(recipe._id));
+      console.log("Dispatched removeFavorite for:", recipe._id);
+    } else {
+      dispatch(addFavorite(recipe));
+      console.log("Dispatched addFavorite with:", recipe);
+    }
   };
 
   const isFavorite = (recipeId) => favorites.some((fav) => fav._id === recipeId);
@@ -47,7 +53,7 @@ const RecipeLists = () => {
         <p>No recipes found. Try searching for a dish above.</p>
       ) : (
         recipes.map((recipe) => (
-          <div key={recipe.id} className="recipe-card">
+          <div key={recipe._id} className="recipe-card">
             <img src={recipe.image} alt={recipe.name} className="recipe-image" />
             <h3>{recipe.name}</h3>
             <span className='recipe-icons'>

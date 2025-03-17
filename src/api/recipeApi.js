@@ -15,3 +15,14 @@ export const fetchRecipes = async (category = "", query = "") => {
       return []; 
     }
   };
+
+  export const fetchRecipeById = async (id) => {
+    try {
+      const response = await axios.get(`${API_BASE_URL}/${id}`);
+      console.log("API Response (fetchRecipeById):", response.data);
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching recipe by ID:", error);
+      throw error; 
+    }
+  };

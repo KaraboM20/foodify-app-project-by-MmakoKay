@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchRecipes } from '../api/recipeApi';
+import { fetchRecipeById } from '../api/recipeApi';
 import './RecipeDetails.css';
 
 const RecipeDetails = () => {
@@ -12,19 +12,10 @@ const RecipeDetails = () => {
   useEffect(() => {
     const fetchRecipeDetails = async () => {
       try {
-        console.log("URL ID:", id); // Check the ID from the URL
-        const allRecipes = await fetchRecipes("");
-        console.log("Fetched recipes:", allRecipes); // Check API response
-        const selectedRecipe = allRecipes.find((r) => {
-          console.log("Comparing:", r._id, "with", id); // Debug each comparison
-          return r._id === id;
-        });
-        console.log("Selected recipe:", selectedRecipe); // Check result
-        if (selectedRecipe) {
-          setRecipe(selectedRecipe);
-        } else {
-          setError("Recipe not found");
-        }
+        console.log("URL ID:", id);
+        const data = await fetchRecipeById(id);
+        console.log("Fetched recipe:", data);
+        setRecipe(data);
       } catch (err) {
         setError("Failed to load recipe details");
         console.error("Fetch error:", err);
