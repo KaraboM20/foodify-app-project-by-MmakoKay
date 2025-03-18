@@ -25,7 +25,6 @@ Welcome to **Foodify App**, a recipe web application built with React, Express, 
 ## Tech Stack
 - **Frontend**: React (Create React App) for a dynamic, responsive UI.
 - **Backend**: Express.js with MongoDB for storing and serving recipes.
-- **Deployment**: Netlify with serverless functions for hosting and API access.
 - **Database**: MongoDB Atlas for cloud-based recipe storage.
 
   
@@ -36,12 +35,12 @@ To run this project on your machine, follow these steps:
    ```bash
    git clone https://github.com/KaraboM20/foodify-app-project-by-MmakoKay.git
 
-   **STEP 1: Initialize the Server**
+   // STEP 1: Initialize the Server
    cd C:\Users\Admin\Documents\foodify-app-project\server
    npm start
 
    
-   **STEP 2: Open the project**
+   // STEP 2: Open the project
    Open another terminal then run:
    cd C:\Users\Admin\Documents\foodify-app-project
    npm start
