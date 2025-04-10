@@ -10,13 +10,13 @@ import { store } from './redux/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter>
   <Provider store={store}>
-  <RecipeProvider>
+  <RecipeProvider>  
+  <BrowserRouter>
       <App />
-  </RecipeProvider> 
-  </Provider>
   </BrowserRouter>
+  </RecipeProvider>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

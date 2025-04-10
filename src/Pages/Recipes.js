@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { fetchRecipes } from "../api/recipeApi";
 import { Link } from 'react-router-dom';
 import "./Recipes.css"; 
-import { FaRegHeart } from 'react-icons/fa'; 
-import { useDispatch } from 'react-redux';
-import { addFavorite } from '../redux/favoritesSlice';
+import { FaHeart, FaRegHeart } from 'react-icons/fa'; 
+import { useDispatch, useSelector } from 'react-redux';
+import { addFavorite, removeFavorite } from '../redux/favoritesSlice';
+
 
 const Recipes = () => {
   const [allRecipes, setAllRecipes] = useState([]); // Local state for all recipes
@@ -15,6 +16,7 @@ const Recipes = () => {
     dessert: [],
   });
   const dispatch = useDispatch();
+  const favorites = useSelector((state) => state.favorites.items) || [];
 
   // Fetch all recipes on mount
   useEffect(() => {
@@ -60,9 +62,18 @@ const Recipes = () => {
   }, [allRecipes]);
 
   const handleFavoriteClick = (recipe) => {
-    dispatch(addFavorite(recipe));
+    const isAlreadyFavorite = isFavorite(recipe._id);
+        console.log(`${recipe.name} is ${isAlreadyFavorite ? 'already' : 'not'} a favorite`);
+        if (isAlreadyFavorite) {
+          dispatch(removeFavorite(recipe._id));
+          console.log("Dispatched removeFavorite for:", recipe._id);
+        } else {
+          dispatch(addFavorite(recipe));
+          console.log("Dispatched addFavorite with:", recipe);
+        }
   };
 
+  const isFavorite = (recipeId) => favorites.some((fav) => fav._id === recipeId);
   return (
     <div className="recipes-container">
       <h2>All Recipes</h2>
@@ -82,7 +93,7 @@ const Recipes = () => {
                   <button className="recipe-link">View Details</button>
                 </Link>
                 <button className="recipe-icon" onClick={() => handleFavoriteClick(recipe)}>
-                  <FaRegHeart />
+                  {isFavorite(recipe._id) ? <FaHeart color="red" /> : <FaRegHeart />}
                 </button>
               </span>
             </div>
@@ -105,7 +116,7 @@ const Recipes = () => {
                   <button className="recipe-link">View Details</button>
                 </Link>
                 <button className="recipe-icon" onClick={() => handleFavoriteClick(recipe)}>
-                  <FaRegHeart />
+                {isFavorite(recipe._id) ? <FaHeart color="red" /> : <FaRegHeart />}
                 </button>
               </span>
             </div>
@@ -128,7 +139,7 @@ const Recipes = () => {
                   <button className="recipe-link">View Details</button>
                 </Link>
                 <button className="recipe-icon" onClick={() => handleFavoriteClick(recipe)}>
-                  <FaRegHeart />
+                {isFavorite(recipe._id) ? <FaHeart color="red" /> : <FaRegHeart />}
                 </button>
               </span>
             </div>
@@ -151,7 +162,7 @@ const Recipes = () => {
                   <button className="recipe-link">View Details</button>
                 </Link>
                 <button className="recipe-icon" onClick={() => handleFavoriteClick(recipe)}>
-                  <FaRegHeart />
+                  {isFavorite(recipe._id)?<FaHeart color="red" /> : <FaRegHeart />}
                 </button>
               </span>
             </div>

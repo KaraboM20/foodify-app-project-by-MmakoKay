@@ -38,10 +38,10 @@ const RecipeLists = () => {
     console.log(`${recipe.name} is ${isAlreadyFavorite ? 'already' : 'not'} a favorite`);
     if (isAlreadyFavorite) {
       dispatch(removeFavorite(recipe._id));
-      console.log("Dispatched removeFavorite for:", recipe._id);
+      console.log("Removed from favorites:", recipe._id);
     } else {
       dispatch(addFavorite(recipe));
-      console.log("Dispatched addFavorite with:", recipe);
+      console.log("Added to favorite:", recipe);
     }
   };
 

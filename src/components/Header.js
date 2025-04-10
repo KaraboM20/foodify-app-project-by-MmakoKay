@@ -28,7 +28,7 @@ const Header = () => {
 
       {/* Header-icons */}
       <div className="header_option">
-          <NavLink activeClassName='active' to='/favourites'><span className='header-option1'><FaRegHeart title="Favourites" />Favourites</span></NavLink>
+          <NavLink activeClassName='active' to='/favorites'><span className='header-option1'><FaRegHeart title="Favourites" />Favourites</span></NavLink>
           <NavLink activeClassName='active' to='/notifications'><span className='header-option2'><IoMdNotificationsOutline title="notification"/>Notifications</span></NavLink>
      </div>
     </div>

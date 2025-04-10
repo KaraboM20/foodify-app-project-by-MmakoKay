@@ -46,6 +46,10 @@
     margin: 10px 0;
     color: #444;
   }
+
+  .recipe-icon {
+    border: none;
+  }
   
   @media (max-width: 768px) {
     .recipes-list {

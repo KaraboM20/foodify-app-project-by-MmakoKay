@@ -2,7 +2,7 @@ import './App.css';
 import { Route, Switch } from 'react-router-dom';
 import Home from './Pages/Home';
 import RecipeLists from './Pages/RecipeLists';
-import Favourites from './Pages/Favorites';
+import Favorites from './Pages/Favorites';
 import RecipeDetails from './Pages/RecipeDetails';
 import Header from './components/Header';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
@@ -38,8 +38,8 @@ const App = () => {
           <Route path='/:id'>
           <RecipeDetails />
           </Route>
-          <Route path='/favourites'>
-          <Favourites />
+          <Route path='/favorites'>
+          <Favorites />
           </Route>
           <Route path='/notifications'>
           <Notifications />

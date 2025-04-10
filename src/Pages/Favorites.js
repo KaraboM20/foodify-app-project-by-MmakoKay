@@ -12,17 +12,20 @@ const Favorites = () => {
     dispatch(removeFavorite(id));
   };
 
+  if (favorites.length === 0) {
+    return (
+      <div>
+        <h3>You do not have any favourites yet</h3>
+        <NavLink to="/">
+          <button className="favourites-button">Continue Viewing Recipes</button>
+        </NavLink>
+      </div>
+    );
+  }
+
   return (
     <div className="favourites-container">
       <h2>Your Favourite Recipes</h2>
-      {favorites.length === 0 ? (
-        <div>
-          <h3>You do not have any favourites yet</h3>
-          <NavLink to="/">
-            <button className="favourites-button">Continue Viewing Recipes</button>
-          </NavLink>
-        </div>
-      ) : (
         <div className="favourites-list">
           {favorites.map((recipe) => (
             <div key={recipe._id} className="favourite-item">
@@ -42,7 +45,6 @@ const Favorites = () => {
             </div>
           ))}
         </div>
-      )}
     </div>
   );
 };
