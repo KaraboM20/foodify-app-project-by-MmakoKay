@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // Fetch Recipes API
-const API_BASE_URL = "http://localhost:3001/recipes"; 
+const API_BASE_URL = "https://foodify-app-project-by-mmakokay.onrender.com/recipes"; 
 
 
 export const fetchRecipes = async (category = "", query = "") => {
