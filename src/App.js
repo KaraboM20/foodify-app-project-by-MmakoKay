@@ -35,14 +35,14 @@ const App = () => {
           <Route path='/recipe'>
           <RecipeLists /> 
           </Route>
-          <Route path='/:id'>
-          <RecipeDetails />
-          </Route>
           <Route path='/favorites'>
           <Favorites />
           </Route>
           <Route path='/notifications'>
           <Notifications />
+          </Route>
+          <Route path='/:id'>
+          <RecipeDetails />
           </Route>
         </Switch> 
         </main>
