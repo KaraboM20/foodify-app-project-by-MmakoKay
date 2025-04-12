@@ -18,7 +18,10 @@ app.use(express.json());
 const mongoURI = process.env.MONGO_URI;
 mongoose
   .connect(mongoURI || 'mongodb://localhost:27017/recipeDB')
-  .then(() => console.log("MongoDB connected"))
+  .then(() => {
+    console.log("MongoDB connected");
+    seedDB();
+  })
   .catch((err) => console.log(err));
 
 // Recipe Schema
@@ -36,9 +39,16 @@ const recipeSchema = new mongoose.Schema({
 
 const Recipe = mongoose.model("Recipe", recipeSchema);
 
-await Recipe.deleteMany({}); // Force clear old recipes
+async function seedDB() {
+try {
+await Recipe.deleteMany({}); 
     console.log("Cleared existing recipes");
-
+await Recipe.insertMany(recipes);
+    console.log("Inserted 20 updated recipes into recipeDB");
+} catch (error) {
+    console.error("Error seeding database:", error);
+  }
+}
     // Check if data exists, insert if empty
       const recipes = [
         // Breakfast
@@ -48,11 +58,11 @@ await Recipe.deleteMany({}); // Force clear old recipes
         {name: "Breakfast Toast", ingredients: ["bread", "avocado", "egg", "salt", "pepper"], instructions: "Toast bread, mash avocado on top, add fried egg, season with salt and pepper.", image: "https://www.aberdeenskitchen.com/wp-content/uploads/2019/05/Avocado-Egg-Breakfast-Toast-FI-Thumbnail-1200X1200.jpg", category: "breakfast", },
         {name: "Veggie Breakfast Pizza", ingredients: ["pizza dough", "egg", "bell peppers", "cheese", "mushrooms"], instructions: "Roll out dough, top with scrambled egg, veggies, and cheese, bake at 400°F for 15 mins.", image: "https://frommybowl.com/wp-content/uploads/2017/06/Cheezy_Vegan_Breakfast_Pizza_Smoky_Tempeh_Bacon-6.jpg", category: "breakfast",},
         // Lunch
-        { name: "Chicken Burger", ingredient: ["bun", "chicken patty", "lettuce", "tomato", "mayo"], instructions: "Grill chicken patty, assemble on bun with lettuce, tomato, and mayo.", image: "https://i.ytimg.com/vi/L5Z3mO5SqJs/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDXIjGEsLrH8ZKQmhoiqH6d25b9qg", category: "lunch" },
-        { name: "Pepperoni Pizza", ingredient: ["pizza dough", "tomato sauce", "pepperoni", "cheese", "oregano"], instructions: "Spread sauce on dough, add pepperoni and cheese, sprinkle oregano, bake at 425°F for 20 mins.", image: "https://www.cobsbread.com/us/wp-content//uploads/2022/09/Pepperoni-pizza-850x630-1.png", category: "lunch" },
-        { name: "Turkey Sandwich", ingredient: ["bread", "turkey", "lettuce", "cheese", "mustard"], instructions: "Layer turkey, lettuce, and cheese on bread, spread mustard, serve cold or grilled.", image: "https://www.eatingonadime.com/wp-content/uploads/2022/03/eod-turkey-sandwich-5-2.jpg", category: "lunch" },
-        { name: "Cheese Toast", ingredient: ["bread", "cheese", "butter", "garlic", "parsley"], instructions: "Butter bread, add cheese and garlic, bake at 375°F until melted, sprinkle parsley.", image: "https://cdn.loveandlemons.com/wp-content/uploads/2023/01/grilled-cheese-500x500.jpg", category: "lunch" },
-        { name: "Veggie Burger", ingredient: ["bun", "veggie patty", "lettuce", "tomato", "ketchup"], instructions: "Cook veggie patty, assemble on bun with lettuce, tomato, and ketchup.", image: "https://biancazapatka.com/wp-content/uploads/2020/05/veganer-bohnen-burger.jpg", category: "lunch" },
+        { name: "Chicken Burger", ingredients: ["bun", "chicken patty", "lettuce", "tomato", "mayo"], instructions: "Grill chicken patty, assemble on bun with lettuce, tomato, and mayo.", image: "https://i.ytimg.com/vi/L5Z3mO5SqJs/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDXIjGEsLrH8ZKQmhoiqH6d25b9qg", category: "lunch" },
+        { name: "Pepperoni Pizza", ingredients: ["pizza dough", "tomato sauce", "pepperoni", "cheese", "oregano"], instructions: "Spread sauce on dough, add pepperoni and cheese, sprinkle oregano, bake at 425°F for 20 mins.", image: "https://www.cobsbread.com/us/wp-content//uploads/2022/09/Pepperoni-pizza-850x630-1.png", category: "lunch" },
+        { name: "Turkey Sandwich", ingredients: ["bread", "turkey", "lettuce", "cheese", "mustard"], instructions: "Layer turkey, lettuce, and cheese on bread, spread mustard, serve cold or grilled.", image: "https://www.eatingonadime.com/wp-content/uploads/2022/03/eod-turkey-sandwich-5-2.jpg", category: "lunch" },
+        { name: "Cheese Toast", ingredients: ["bread", "cheese", "butter", "garlic", "parsley"], instructions: "Butter bread, add cheese and garlic, bake at 375°F until melted, sprinkle parsley.", image: "https://cdn.loveandlemons.com/wp-content/uploads/2023/01/grilled-cheese-500x500.jpg", category: "lunch" },
+        { name: "Veggie Burger", ingredients: ["bun", "veggie patty", "lettuce", "tomato", "ketchup"], instructions: "Cook veggie patty, assemble on bun with lettuce, tomato, and ketchup.", image: "https://biancazapatka.com/wp-content/uploads/2020/05/veganer-bohnen-burger.jpg", category: "lunch" },
         // Dinner
         { name: "BBQ Burger", ingredients: ["bun", "beef patty", "bbq sauce", "onion", "cheese"], instructions: "Grill beef patty, brush with BBQ sauce, add onion and cheese on bun.", image: "https://realfoodbydad.com/wp-content/uploads/2019/07/Southern-BBQ-Burger-Real-Food-by-Dad-683x1024.jpg", category: "dinner" },
         { name: "Meat Lovers Pizza", ingredients: ["pizza dough", "tomato sauce", "sausage", "pepperoni", "cheese"], instructions: "Spread sauce on dough, top with meats and cheese, bake at 425°F for 20 mins.", image: "https://perfectitaliano.com.au/content/dam/perfectitaliano-aus/recipe/0_desktop/Desktop-BBQ-Meat-Lovers-21.jpg", category: "dinner" },
@@ -66,8 +76,7 @@ await Recipe.deleteMany({}); // Force clear old recipes
         { name: "Fruit Sandwich", ingredients: ["bread", "cream cheese", "strawberries", "blueberries"], instructions: "Spread cream cheese on bread, add berries, sandwich together.", image: "https://www.seriouseats.com/thmb/SSs7XT0dLI1YdWGdk_PMT7qScls=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/20240304-SEA-DebbieWee-fruitsando-HERO-5a229f2d872b469ca43d5f51bc8dd318.jpg", category: "dessert" },
         { name: "Chocolate Toast", ingredients: ["bread", "chocolate spread", "banana", "whipped cream"], instructions: "Spread chocolate on toast, top with banana slices and whipped cream.", image: "https://www.tasteofhome.com/wp-content/uploads/2018/01/Chocolate-French-Toast_EXPS_CMZ18_8306_B10_26_6b.jpg", category: "dessert" }
       ];
-      await Recipe.insertMany(recipes);
-      console.log("Inserted 20 updated recipes into recipeDB");
+      
 
 
   
@@ -87,7 +96,7 @@ app.post("/recipes", async (req, res) => {
 // Get Recipes (GET)
 app.get("/recipes", async (req, res) => {
     try {
-        const { search,category } = req.query; 
+        const { search, category } = req.query; 
 
         let filter = {};
 
@@ -150,11 +159,13 @@ app.delete("/recipes/:id", async (req, res) => {
     }
 });
 
-// Start Server
-const port = process.env.PORT || 3000; // Fallback to 3000 if .env is missing
-app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
+
+export default app;
+
     
     
 
