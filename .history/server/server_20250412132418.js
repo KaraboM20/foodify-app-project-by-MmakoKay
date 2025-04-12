@@ -1,0 +1,1 @@
+mongodb+srv://foodifyUser:Foodify123!@cluster0.1jigf.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
