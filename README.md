@@ -37,7 +37,7 @@ Recipes are neatly divided into:
 ---
 
 ## 🔗 Project Link  
-[Click here to view the Foodify App](YOUR_DEPLOYMENT_LINK_HERE)
+Click here to view the Foodify App: https://foodify-app-project-by-karabommako.netlify.app/
 
 ---
 
