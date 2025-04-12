@@ -73,7 +73,11 @@ const Recipes = () => {
         }
   };
 
-  const isFavorite = (recipeId) => favorites.some((fav) => fav._id === recipeId);
+  const isFavorite = (recipeId) => {
+    console.log("Favorites array:", favorites);
+    return favorites.some((fav) => fav._id === recipeId);
+  };
+
   return (
     <div className="recipes-container">
       <h2>All Recipes</h2>
