@@ -39,17 +39,9 @@ const recipeSchema = new mongoose.Schema({
 
 const Recipe = mongoose.model("Recipe", recipeSchema);
 
-async function seedDB() {
-try {
-await Recipe.deleteMany({}); 
-    console.log("Cleared existing recipes");
-await Recipe.insertMany(recipes);
-    console.log("Inserted 20 updated recipes into recipeDB");
-} catch (error) {
-    console.error("Error seeding database:", error);
-  }
-}
-    // Check if data exists, insert if empty
+const seedDB = async () => {
+    await Recipe.deleteMany({});
+    
       const recipes = [
         // Breakfast
         {name: "Breakfast Burger", ingredients: ["bun", "egg", "bacon", "cheese", "lettuce"], instructions: "Fry egg and bacon, assemble on bun with cheese and lettuce, serve warm.", image: " https://stephenlarosa.co/wp-content/uploads/2021/07/Breakfast-Burger.blog-1-scaled.jpg", category: "breakfast", },
@@ -76,9 +68,9 @@ await Recipe.insertMany(recipes);
         { name: "Fruit Sandwich", ingredients: ["bread", "cream cheese", "strawberries", "blueberries"], instructions: "Spread cream cheese on bread, add berries, sandwich together.", image: "https://www.seriouseats.com/thmb/SSs7XT0dLI1YdWGdk_PMT7qScls=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/20240304-SEA-DebbieWee-fruitsando-HERO-5a229f2d872b469ca43d5f51bc8dd318.jpg", category: "dessert" },
         { name: "Chocolate Toast", ingredients: ["bread", "chocolate spread", "banana", "whipped cream"], instructions: "Spread chocolate on toast, top with banana slices and whipped cream.", image: "https://www.tasteofhome.com/wp-content/uploads/2018/01/Chocolate-French-Toast_EXPS_CMZ18_8306_B10_26_6b.jpg", category: "dessert" }
       ];
-      
-
-
+      await Recipe.insertMany(recipes);
+  console.log('Database seeded');
+};
   
 // Create Recipe (POST)
 app.post("/recipes", async (req, res) => {
@@ -164,7 +156,7 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 
-export default app;
+
 
     
     
