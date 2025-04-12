@@ -51,17 +51,36 @@
 .header-option1 {
     margin-right: 15px;
     display: grid;
-    cursor: pointer;    
+    cursor: pointer;
+    position: relative;
+    align-items: center;
+    
 }
 
 .header-option1:hover {
     color: white;
 }
 
+.favorite-count {
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    font-size: 10px;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -8px;
+    right: -12px;
+  }
+
 .header-option2 {
     margin-right: 15px;
     display: grid;
     cursor: pointer;
+    
 }
 
 .header-option2:hover {

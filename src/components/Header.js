@@ -3,10 +3,13 @@ import { NavLink } from 'react-router-dom';
 import './Header.css';
 import { FaRegHeart } from 'react-icons/fa';  // Import Heart icon
 import { IoMdNotificationsOutline } from 'react-icons/io'; // Import Notification icon
+import { useSelector } from 'react-redux';
 
 
 
 const Header = () => {
+  const favorites = useSelector((state) => state.favorites.items) || [];
+  const favoriteCount = favorites.length;
 
   return (
     <div className='header'>
@@ -28,7 +31,9 @@ const Header = () => {
 
       {/* Header-icons */}
       <div className="header_option">
-          <NavLink activeClassName='active' to='/favorites'><span className='header-option1'><FaRegHeart title="Favourites" />Favourites</span></NavLink>
+          <NavLink activeClassName='active' to='/favorites'><span className='header-option1'><FaRegHeart title="Favourites" />Favourites {favoriteCount > 0 && (
+            <span className="favorite-count">{favoriteCount}</span>
+          )}</span></NavLink>
           <NavLink activeClassName='active' to='/notifications'><span className='header-option2'><IoMdNotificationsOutline title="notification"/>Notifications</span></NavLink>
      </div>
     </div>
