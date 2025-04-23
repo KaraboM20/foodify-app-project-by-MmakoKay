@@ -1,5 +1,5 @@
 import React from 'react';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import './RecipeLists.css';
 import { Link } from "react-router-dom"; 
 import { FaRegHeart } from 'react-icons/fa'; 
@@ -12,6 +12,7 @@ import { addFavorite, removeFavorite } from '../redux/favoritesSlice';
 
 const RecipeLists = () => {
   const { recipes, setRecipes, isSearching } = useContext(RecipeContext);
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.favorites.items) || [];
 
@@ -19,14 +20,16 @@ const RecipeLists = () => {
     const loadRecipes = async () => {
       try {
         if (!isSearching && recipes.length === 0) {
-          // Load all recipes initially if not searching
+          setLoading(true);
           const data = await fetchRecipes("");
           console.log("Initial recipes:", data);
           setRecipes(data);
+          setLoading(false);
         }
         
       } catch (error) {
         console.error("Error loading recipes:", error);
+        setLoading(false);
       }
     };
 
@@ -49,7 +52,9 @@ const RecipeLists = () => {
 
   return (
     <div className="recipe-list">
-      {recipes.length === 0 ? (
+      {loading ? (
+        <p>Loading recipes...</p>
+      ) : recipes.length === 0 ? (
         <p>No recipes found. Try searching for a dish above.</p>
       ) : (
         recipes.map((recipe) => (
